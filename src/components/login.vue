@@ -1,7 +1,7 @@
 <template>
   <div class="login-wrapper" transition="loginslide">
     <div class="header">
-      
+
     </div>
     <div class="body">
       <div class="-title">
@@ -11,18 +11,15 @@
         <label>群昵称：</label>
         <input type="text" v-model="name" placeholder="10字以内">
       </div>
-      <div class="-weichat">
-        <label>微信号：</label>
-        <input type="text"v-model="weichat" placeholder="方便私聊（选填）">
-      </div>
+      <!--<div class="-weichat">-->
+        <!--<label>微信号：</label>-->
+        <!--<input type="text"v-model="weichat" placeholder="方便私聊（选填）">-->
+      <!--</div>-->
       <div class="-login">
         <span class="-btn" @click="login()">登录</span>
       </div>
     </div>
     <div class="foot">
-      <span>@<a href="http://www.redream.cn">redream</a>,你说，远方有什么？</span>
-      <span>(没钱验证微信号，在浏览器打开可消除微信安全提示)</span>
-
     </div>
   </div>
 </template>
@@ -39,7 +36,7 @@ export default {
     }
   },
   ready(){
-    
+
   },
   methods:{
     send(msg){
@@ -118,7 +115,7 @@ export default {
         color: #666;
         background-color: rgba(0,0,0,0.02);
       }
-      
+
 
     }
     .-login{

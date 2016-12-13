@@ -30,7 +30,7 @@ const CHAT={
 		}else{
 			console.log('msg is null')
 		}
-		
+
 		return false;
 	},
 	genUid:function(){
@@ -44,7 +44,7 @@ const CHAT={
 		this.onlineCount = o.onlineCount;
 		//新加入用户的信息
 		var user = o.user;
-			
+
 		//更新在线人数
 		var userhtml = '';
 		var separator = '';
@@ -55,7 +55,7 @@ const CHAT={
 		// 	}
 	 //  }
 		// d.getElementById("onlinecount").innerHTML = '当前共有 '+onlineCount+' 人在线，在线列表：'+userhtml;
-		
+
 		// //添加系统消息
 		// var html = '';
 		// html += '<div class="msg-system">';
@@ -65,7 +65,7 @@ const CHAT={
 		// var section = d.createElement('section');
 		// section.className = 'system J-mjrlinkWrap J-cutMsg';
 		// section.innerHTML = html;
-		// this.msgObj.appendChild(section);	
+		// this.msgObj.appendChild(section);
 		// this.scrollToBottom();
 	},
 	changeInfo(){
@@ -88,10 +88,10 @@ const CHAT={
 
 		if (!this.userid) {return}
 		// this.username = Math.floor(Math.random()*10);
-		
+
 		//连接websocket后端服务器
-		this.socket = io.connect('wss://node.redream.cn');
-		
+		this.socket = io.connect('ws://localhost:3000/');
+
 		//告诉服务器端有用户登录
 		this.socket.emit('login', {userid:this.userid, username:this.username,color:this.color,weichat:this.weichat});
 		//心跳包，30s左右无数据浏览器会断开连接Heartbeat
@@ -102,24 +102,24 @@ const CHAT={
 		//监听新用户登录
 		this.socket.on('login', function(obj){
 			CHAT.updateSysMsg(obj, 'logout');
-			CHAT.msgArr.push(obj)	
+			CHAT.msgArr.push(obj)
 		});
-		
+
 		this.socket.on('changeInfo', function(o){
 			CHAT.onlineUsers[o.userid]=o
-			console.log(o)	
+			console.log(o)
 		});
 		//监听用户退出
 		this.socket.on('logout', function(o){
 			CHAT.updateSysMsg(o, 'logout');
 		});
-		
+
 		//监听消息发送
 		this.socket.on('message', function(obj){
 			// var isme = (obj.userid == CHAT.userid) ? true : false;
-			CHAT.msgArr.push(obj)	
+			CHAT.msgArr.push(obj)
 		});
 
 	}
-}	
+}
 export default CHAT

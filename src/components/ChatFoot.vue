@@ -1,6 +1,6 @@
 <template>
   <div class="foot-wrapper">
-    <input class="chat-input" type="text" name="" v-model="msg">
+    <input class="chat-input" type="text" name="" v-model="msg" @onkeydown="if (event.keyCode == 13)send(msg);">
     <span class="chat-sub" :class="{'primary':!!msg}" @click="send(msg)">发送</span>
   </div>
 </template>
@@ -42,7 +42,7 @@ export default {
     width: 80%;
     border-radius: 10px;
     outline: none;
-    border:none; 
+    border:none;
     box-sizing: border-box;
     padding: 5px;
   }

@@ -30,7 +30,7 @@ export default {
     if (!localStorage.getItem('name')) {
       this.$router.go('/login')
     }
-    this.visit()  
+//    this.visit()
   },
   components:{
     OtherMsg,

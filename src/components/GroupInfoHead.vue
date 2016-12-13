@@ -7,12 +7,8 @@
     <p class="group-name">江湖人的江湖({{CHAT.onlineCount}})</p>
   </div>
   <div class="-right" @click="open()" >
-    <i class="iconfont icon-share"></i>
   </div>
 </div>
-<dialog v-if="isShare" @click="close()">
-	<div class="share">点击右上角分享</div>
-</dialog>
 </template>
 <script>
 import CHAT from '../api/client'
@@ -25,7 +21,7 @@ export default{
 		}
 	},
 	ready(){
-		
+
 	},
 	components:{
 		dialog
@@ -65,7 +61,7 @@ export default{
 	      font-size: 26px !important;
 	      color: #fff;
 	    }
-	    
+
 	  }
 	  .-mid{
 	    display: flex;
